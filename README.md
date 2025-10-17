@@ -1,5 +1,7 @@
 # Unykorn 7777 Team AI System
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/kevanbtc/UnyKorn7777?quickstart=1)
+
 Welcome to the Unykorn 7777 platform. This monorepo powers your business, project management, AI agents, and XRPL wallet integration for your team.
 
 ## Structure
