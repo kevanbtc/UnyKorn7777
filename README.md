@@ -9,6 +9,21 @@ Welcome to the Unykorn 7777 platform. This monorepo powers your business, projec
 - `.github/` — Project instructions and workflows
 
 ## Getting Started
+
+### Option 1: GitHub Codespaces (Recommended)
+
+The fastest way to get started is using GitHub Codespaces, which provides a fully configured cloud development environment:
+
+1. Click the green "Code" button on GitHub
+2. Select the "Codespaces" tab
+3. Click "Create codespace on main"
+4. Wait for automatic setup to complete (~2-3 minutes)
+5. Run `npm run dev` to start all services
+
+See [.devcontainer/README.md](.devcontainer/README.md) for detailed Codespaces documentation.
+
+### Option 2: Local Development
+
 1. Copy `.env.example` to `.env` (root) and adjust values
 2. In `apps/api/`, copy `.env.example` to `.env` and set:
 	- DATABASE_URL (matches docker-compose Postgres)
