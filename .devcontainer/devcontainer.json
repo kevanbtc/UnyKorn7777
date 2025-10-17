@@ -1,0 +1,73 @@
+{
+  "name": "Unykorn 7777 Development",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "true"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    }
+  },
+
+  "runArgs": [
+    "--name",
+    "unykorn-devcontainer"
+  ],
+
+  "containerEnv": {
+    "NODE_ENV": "development"
+  },
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+
+  "forwardPorts": [3000, 3001, 4000, 5432],
+
+  "portsAttributes": {
+    "3000": {
+      "label": "Web App",
+      "onAutoForward": "notify"
+    },
+    "3001": {
+      "label": "Admin App",
+      "onAutoForward": "notify"
+    },
+    "4000": {
+      "label": "API Server",
+      "onAutoForward": "notify"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "silent"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "Prisma.prisma",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "typescript.updateImportsOnFileMove.enabled": "always"
+      }
+    }
+  },
+
+  "remoteUser": "node"
+}
