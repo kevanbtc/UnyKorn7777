@@ -64,3 +64,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Post-deploy verification
+        if: success()
+        run: |
+          echo "Checking live site status..."
+          curl -I https://unykorn.org | head -n 10 || true
+          echo
+          echo "Checking TOML availability..."
+          curl -I https://unykorn.org/.well-known/xrp-ledger.toml | head -n 10 || true
+
+      - name: Summarize verification
+        if: success()
+        run: |
+          echo "### 🌐 Deployment Verification" >> $GITHUB_STEP_SUMMARY
+          echo "- **Home page:** $(curl -s -o /dev/null -w "%{http_code}" https://unykorn.org)" >> $GITHUB_STEP_SUMMARY
+          echo "- **XRP Ledger TOML:** $(curl -s -o /dev/null -w "%{http_code}" https://unykorn.org/.well-known/xrp-ledger.toml)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Timestamp:** $(date -u)" >> $GITHUB_STEP_SUMMARY
