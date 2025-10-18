@@ -47,11 +47,10 @@ jobs:
         run: |
           npm ci || npm install
 
-      - name: Build static web (Next.js export)
+      - name: Build static web
         working-directory: apps/web
         run: |
           npm run build || npx next build
-          npx next export
 
       - name: Ensure CNAME for custom domain
         run: |
