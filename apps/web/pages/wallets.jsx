@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 export default function Wallets() {
   const [addr, setAddr] = useState('');
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<any>(null);
-  const [error, setError] = useState<string>('');
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState('');
 
   const check = async () => {
     setLoading(true);
@@ -15,8 +15,8 @@ export default function Wallets() {
       const j = await r.json();
       if (!r.ok) throw new Error(j.error || 'Failed');
       setResult(j);
-    } catch (e:any) {
-      setError(e.message || 'Error');
+    } catch (e) {
+      setError(e?.message || 'Error');
     } finally {
       setLoading(false);
     }
